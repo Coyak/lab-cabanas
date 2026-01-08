@@ -10,6 +10,8 @@ RUN npm run build
 FROM nginx:alpine
 # Copiar la configuración por defecto de Astro (dist) al directorio de Nginx
 COPY --from=build /app/dist /usr/share/nginx/html
+# Copiar nuestra configuración personalizada de Nginx
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Exponer el puerto 80
 EXPOSE 80
